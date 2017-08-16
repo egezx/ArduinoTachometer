@@ -25,7 +25,13 @@ void WriteSerial()
 {
   //Duration is expressed as microseconds. 1 second = 1 000 000 microseconds so we want to divide 1000000 by duration.
   //After division we know rounds per second so we finally have to multiply it by 60 to get rounds per minute.
-  String rpmString = "RPM: " + String((1000000 / duration) * 60); 
+  String rpmString = "";
+  
+  if(duration != 0)
+    rpmString = "RPM: " + String((1000000 / duration) * 60); 
+  else rpmString = "RPM: 0";
+  
+  
   Serial.println(rpmString);
 }
 
