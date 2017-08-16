@@ -16,14 +16,14 @@ int counter = 0;
 unsigned long duration = 0;
 unsigned long oldTime = micros();
 
-int lightLowThreshold = 50;
-int lightHighThreshold = 100;
+int lightLowThreshold = 50; //Maximum amount of light accepted for low "state".
+int lightHighThreshold = 100; //Minimum amount of light required for high "state".
 
 int fanBladeCount = 7;
 
 void WriteSerial()
 {
-  //Duration is expressed as microseconds. 1 microsecond = 1 000 000 seconds so we wan't to divide 1000000 by duration.
+  //Duration is expressed as microseconds. 1 second = 1 000 000 microseconds so we wan't to divide 1000000 by duration.
   //After division we know rounds per second so we finally have to multiply it by 60 to get rounds per minute.
   String rpmString = "RPM: " + String((1000000 / duration) * 60); 
   Serial.println(rpmString);
